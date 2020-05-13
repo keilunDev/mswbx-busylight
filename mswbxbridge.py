@@ -38,13 +38,10 @@ RED=GPIO.PWM(red,Freq)
 GREEN=GPIO.PWM(green,Freq)
 BLUE=GPIO.PWM(blue,Freq)
 
-#if not setting personId as an environment varaible,
-#then replace the next line with 
-api=WebexTeamsAPI(access_token="ODg3MWYxYTEtYmYzZS00MTVlLTgxYTAtZDJlNWNhOTY0ZGJjMjE2Yjk2NDQtZmNh_PF84_a5d5200e-5a40-4983-9e36-e8f4d07c668d")
-#api=WebexTeamsAPI()
 
-#pull the personId from environment variable
-mywebexid="Y2lzY29zcGFyazovL3VzL1BFT1BMRS9mOWM5OTY5MS04MjA1LTQwYWYtOGExYi01ZDc1MTJkYzJiNDI"
+api=WebexTeamsAPI(access_token="yourAccessToken")
+mywebexid="yourpersonId"
+
 api.people.get(personId=mywebexid).status
 
 # Optional logging
