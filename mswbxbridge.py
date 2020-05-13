@@ -10,9 +10,9 @@ The configuration file would look like this:
     # https://docs.microsoft.com/en-us/graph/permissions-reference
     # To restrict who can login to this app, you can find more Microsoft Graph API endpoints from Graph Explorer
     # https://developer.microsoft.com/en-us/graph/graph-explorer
-You can then run with a JSON configuration file:
+You can then run this sample with a JSON configuration file:
 
-    python mswbxbridge.py parameters.json
+    python sample.py parameters.json
 """
 
 import sys  # For simplicity, we'll read config file from 1st CLI param sys.argv[1]
@@ -30,6 +30,7 @@ GPIO.setmode(GPIO.BCM)
 green=20
 red=21
 blue=22
+GPIO.setwarnings(False)
 GPIO.setup(red,GPIO.OUT)
 GPIO.setup(green,GPIO.OUT)
 GPIO.setup(blue,GPIO.OUT)
@@ -39,15 +40,15 @@ GREEN=GPIO.PWM(green,Freq)
 BLUE=GPIO.PWM(blue,Freq)
 
 
-api=WebexTeamsAPI(access_token="yourAccessToken")
-mywebexid="yourpersonId"
-
-api.people.get(personId=mywebexid).status
-
 # Optional logging
 # logging.basicConfig(level=logging.DEBUG)
 
+# Read config from command line
+
 config = json.load(open(sys.argv[1]))
+
+
+# Check token cache for MS Teams
 cache = msal.SerializableTokenCache()
 if os.path.exists("my_cache.bin"):
     cache.deserialize(open("my_cache.bin", "r").read())
@@ -56,6 +57,14 @@ atexit.register(lambda:
     # Hint: The following optional line persists only when state changed
     if cache.has_state_changed else None
     )
+
+# Webex Configuration
+
+api=WebexTeamsAPI(access_token=config["access_token"])
+mywebexid=config["personId"]
+
+api.people.get(personId=mywebexid).status
+
 # Create a preferably long-lived app instance which maintains a token cache.
 app = msal.PublicClientApplication(
     config["client_id"], authority=config["authority"],
