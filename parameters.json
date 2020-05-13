@@ -1,0 +1,6 @@
+{
+    "authority": "https://login.microsoftonline.com/common",
+    "client_id": "66204339-daf1-40fa-aa31-57342272edce",
+    "scope": ["Presence.Read"],
+    "endpoint": "https://graph.microsoft.com/beta/me/presence"
+}
