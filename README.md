@@ -10,3 +10,5 @@ https://www.instructables.com/id/Raspberry-Pi-3-RGB-LED-With-Using-PWM/
 MS Teams presence code from Azure samples:
 https://github.com/Azure-Samples/ms-identity-python-devicecodeflow
 
+Presence Azure AD application by Elio Struyf:
+https://www.eliostruyf.com/diy-building-busy-light-show-microsoft-teams-presence/
