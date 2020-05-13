@@ -10,9 +10,9 @@ The configuration file would look like this:
     # https://docs.microsoft.com/en-us/graph/permissions-reference
     # To restrict who can login to this app, you can find more Microsoft Graph API endpoints from Graph Explorer
     # https://developer.microsoft.com/en-us/graph/graph-explorer
-You can then run this sample with a JSON configuration file:
+You can then run with a JSON configuration file:
 
-    python sample.py parameters.json
+    python mswbxbridge.py parameters.json
 """
 
 import sys  # For simplicity, we'll read config file from 1st CLI param sys.argv[1]
